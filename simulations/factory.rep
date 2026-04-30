@@ -1,0 +1,81 @@
+Simulation	SoftwareName	JaamSim	-
+Simulation	SoftwareVersion	2025-10	-
+Simulation	ConfigurationFile	C:\Users\ChristianCostaEDMV\IdeaProjects\jaamsim-master\simulations\factory.cfg	-
+Simulation	ScenarioNumber	1.0	-
+Simulation	ScenarioIndex	{ 1 }	-
+Simulation	ReplicationNumber	1.0	-
+Simulation	RunNumber	1.0	-
+Simulation	RunIndex	{ 1 }	-
+Simulation	PresentTimeAndDate	Feb 25, 2026 10:35	-
+Simulation	PresentSimulationTime	1000.0	h
+Simulation	RunDuration	1000.0	h
+Simulation	InitializationDuration	0.0	h
+
+*** FileLogger ***
+
+MyLogger	StateTimes[None]	1000.0	h
+MyLogger	TotalTime	1000.0	h
+MyLogger	NumberAdded	0.0	-
+MyLogger	NumberProcessed	1800000.0	-
+
+*** EntityGenerator ***
+
+ParcelGenerator	StateTimes[Breakdown]	0.0	h
+ParcelGenerator	StateTimes[Idle]	0.0	h
+ParcelGenerator	StateTimes[Maintenance]	0.0	h
+ParcelGenerator	StateTimes[Stopped]	0.0	h
+ParcelGenerator	StateTimes[Working]	1000.0	h
+ParcelGenerator	TotalTime	1000.0	h
+ParcelGenerator	Utilisation	1.0	-
+ParcelGenerator	Commitment	1.0	-
+ParcelGenerator	Availability	1.0	-
+ParcelGenerator	Reliability	1.0	-
+ParcelGenerator	NumberAdded	1800000.0	-
+ParcelGenerator	NumberProcessed	1800000.0	-
+
+*** EntitySink ***
+
+ShippingDock	StateTimes[None]	1000.0	h
+ShippingDock	TotalTime	1000.0	h
+ShippingDock	NumberAdded	1800000.0	-
+ShippingDock	NumberProcessed	1800000.0	-
+
+*** Queue ***
+
+ConveyorQueue	StateTimes[None]	1000.0	h
+ConveyorQueue	TotalTime	1000.0	h
+ConveyorQueue	NumberAdded	1800000.0	-
+ConveyorQueue	NumberProcessed	1800000.0	-
+ConveyorQueue	QueueLengthAverage	0.0	-
+ConveyorQueue	QueueLengthStandardDeviation	0.0	-
+ConveyorQueue	QueueLengthMinimum	0.0	-
+ConveyorQueue	QueueLengthMaximum	0.0	-
+ConveyorQueue	QueueLengthTimes[0]	1000.0	h
+ConveyorQueue	QueueLengthTimes[1]	0.0	h
+ConveyorQueue	QueueLengthFractions[0]	1.0	-
+ConveyorQueue	QueueLengthFractions[1]	0.0	-
+ConveyorQueue	QueueLengthCumulativeFractions[0]	1.0	-
+ConveyorQueue	QueueLengthCumulativeFractions[1]	1.0	-
+ConveyorQueue	AverageQueueTime	0.0	h
+ConveyorQueue	NumberReneged	0.0	-
+
+*** Server ***
+
+PackerMachine	StateTimes[Breakdown]	0.0	h
+PackerMachine	StateTimes[Idle]	250.0	h
+PackerMachine	StateTimes[Maintenance]	0.0	h
+PackerMachine	StateTimes[Stopped]	0.0	h
+PackerMachine	StateTimes[Working]	750.0	h
+PackerMachine	TotalTime	1000.0	h
+PackerMachine	Utilisation	0.75	-
+PackerMachine	Commitment	0.75	-
+PackerMachine	Availability	1.0	-
+PackerMachine	Reliability	1.0	-
+PackerMachine	NumberAdded	1800000.0	-
+PackerMachine	NumberProcessed	1800000.0	-
+
+*** SimEntity ***
+
+Parcel	StateTimes[None]	1000.0	h
+Parcel	TotalTime	1000.0	h
+

@@ -1,0 +1,48 @@
+╔═══════════════════════════════════════════════════════════════════════════════════╗
+║                         JAAMSIM EVENT TRACE LOG                                 ║
+╠═══════════════════════════════════════════════════════════════════════════════════╣
+
+#        Time(s)    Pri   Description                                   State       
+─────────────────────────────────────────────────────────────────────────────────────
+1        0.0        0     EntityGenerator1.startUp                      Scheduled   
+2        0.0        0     EntitySink1.startUp                           Scheduled   
+3        0.0        0     Queue1.startUp                                Scheduled   
+4        0.0        0     Server1.startUp                               Scheduled   
+5        0.0        0     SimEntity1.startUp                            Scheduled   
+6        31536000.0 5     Simulation.end                                Scheduled   
+7        0.0        0     EntityGenerator1.startUp                      Event       
+8        0.0        5     EntityGenerator1.endStep                      Scheduled   
+9        0.0        0     EntitySink1.startUp                           Event       
+10       0.0        0     Queue1.startUp                                Event       
+11       0.0        0     Server1.startUp                               Event       
+12       0.0        0     SimEntity1.startUp                            Event       
+13       0.0        5     EntityGenerator1.endStep                      Event       
+14       0.0        2     Queue1.UpdateAllQueueUsers                    Scheduled   
+15       1.0        5     EntityGenerator1.endStep                      Scheduled   
+16       0.0        2     Queue1.UpdateAllQueueUsers                    Event       
+17       0.0        5     Server1.endStep                               Scheduled   
+18       0.0        5     Server1.endStep                               Event       
+19       1.0        5     EntityGenerator1.endStep                      Event       
+20       1.0        2     Queue1.UpdateAllQueueUsers                    Scheduled   
+21       2.0        5     EntityGenerator1.endStep                      Scheduled   
+22       1.0        2     Queue1.UpdateAllQueueUsers                    Event       
+23       1.0        5     Server1.endStep                               Scheduled   
+24       1.0        5     Server1.endStep                               Event       
+25       2.0        5     EntityGenerator1.endStep                      Event       
+26       2.0        2     Queue1.UpdateAllQueueUsers                    Scheduled   
+27       3.0        5     EntityGenerator1.endStep                      Scheduled   
+28       2.0        2     Queue1.UpdateAllQueueUsers                    Event       
+29       2.0        5     Server1.endStep                               Scheduled   
+30       2.0        5     Server1.endStep                               Event       
+31       3.0        5     EntityGenerator1.endStep                      Event       
+32       3.0        2     Queue1.UpdateAllQueueUsers                    Scheduled   
+33       4.0        5     EntityGenerator1.endStep                      Scheduled   
+34       3.0        2     Queue1.UpdateAllQueueUsers                    Event       
+35       3.0        5     Server1.endStep                               Scheduled   
+36       3.0        5     Server1.endStep                               Event       
+37       4.0        5     EntityGenerator1.endStep                      Event       
+38       4.0        2     Queue1.UpdateAllQueueUsers                    Scheduled   
+39       5.0        5     EntityGenerator1.endStep                      Scheduled   
+40       4.0        2     Queue1.UpdateAllQueueUsers                    Event       
+41       4.0        5     Server1.endStep                               Scheduled   
+42       4.0        5     Server1.endStep                               Event       

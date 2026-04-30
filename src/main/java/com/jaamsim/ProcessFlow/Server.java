@@ -1,0 +1,114 @@
+/*
+ * JaamSim Discrete Event Simulation
+ * Copyright (C) 2013 Ausenco Engineering Canada Inc.
+ * Copyright (C) 2016-2025 JaamSim Software Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package com.jaamsim.ProcessFlow;
+
+import com.jaamsim.Graphics.DisplayEntity;
+import com.jaamsim.Samples.SampleInput;
+import com.jaamsim.input.Keyword;
+import com.jaamsim.units.TimeUnit;
+
+/**
+ * Server processes entities one by one from a queue.  When finished with an entity, it passes it to the next
+ * LinkedComponent in the chain.
+ */
+public class Server extends LinkedService {
+
+	@Keyword(description = "The service time required to process an entity.",
+	         exampleList = { "3.0 h", "NormalDistribution1", "'1[s] + 0.5*[TimeSeries1].PresentValue'" })
+	private final SampleInput serviceTime;
+
+	private DisplayEntity servedEntity;	// the DisplayEntity being server
+
+	{
+		releaseThresholdList.setHidden(false);
+
+		serviceTime = new SampleInput("ServiceTime", KEY_INPUTS, 0.0d);
+		serviceTime.setUnitType(TimeUnit.class);
+		serviceTime.setValidRange(0, Double.POSITIVE_INFINITY);
+		serviceTime.setOutput(true);
+		this.addInput(serviceTime);
+	}
+
+	public Server() {}
+
+	@Override
+	public void earlyInit() {
+		super.earlyInit();
+		servedEntity = null;
+	}
+
+	@Override
+	protected boolean startProcessing(double simTime) {
+
+		// Determine the match value
+		String m = this.getNextMatchValue(getSimTime());
+		this.setMatchValue(m);
+
+		// Remove the first entity from the queue
+		servedEntity = this.removeNextEntity(m);
+		if (servedEntity == null)
+			return false;
+
+		receiveEntity(servedEntity);
+		setEntityState(servedEntity);
+
+		// Assign attributes
+		assignAttributesAtStart(simTime);
+
+		return true;
+	}
+
+	@Override
+	protected void processStep(double simTime) {
+
+		// Check for a release threshold closure
+		if (isReleaseThresholdClosure()) {
+			setReadyToRelease(true);
+			return;
+		}
+
+		// Send the entity to the next component in the chain
+		this.sendToNextComponent(servedEntity);
+		servedEntity = null;
+	}
+
+	@Override
+	protected double getStepDuration(double simTime) {
+		return serviceTime.getNextSample(this, simTime);
+	}
+
+	@Override
+	protected boolean isNewStepReqd(boolean completed) {
+		return completed && servedEntity == null;
+	}
+
+	@Override
+	public boolean isFinished() {
+		return servedEntity == null;
+	}
+
+	@Override
+	public void updateGraphics(double simTime) {
+		super.updateGraphics(simTime);
+
+		if (servedEntity == null)
+			return;
+		moveToProcessPosition(servedEntity);
+	}
+
+}
